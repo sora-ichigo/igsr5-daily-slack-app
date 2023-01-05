@@ -1,0 +1,7 @@
+{
+  "plugins": ["prettier", "unused-imports"],
+  "rules": {
+    "unused-imports/no-unused-imports": "error",
+    "prettier/prettier": "error"
+  }
+}
