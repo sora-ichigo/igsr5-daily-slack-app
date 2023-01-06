@@ -22,7 +22,7 @@
   },
   "scripts": {
     "dev": "nodemon --watch 'src/*' --ext .ts --exec 'yarn start'",
-    "start": "babel-node -x .ts -- src/index.ts",
+    "start": "node dist/index.js",
     "lint": "eslint --ext .ts src",
     "build": "babel src/ --out-dir dist --extensions '.ts'"
   },
