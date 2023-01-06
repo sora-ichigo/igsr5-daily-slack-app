@@ -14,10 +14,12 @@
     "eslint": "^8",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "nodemon": "^2.0.20",
     "prettier": "^2.8.1",
     "typescript": "^4.9.4"
   },
   "scripts": {
+    "dev": "nodemon --watch 'src/*' --ext .ts --exec 'yarn start'",
     "start": "babel-node -x .ts -- src/index.ts",
     "lint": "eslint --ext .ts src"
   },
