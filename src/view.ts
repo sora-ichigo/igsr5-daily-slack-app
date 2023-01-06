@@ -1,10 +1,11 @@
 import { App } from "@slack/bolt";
 import { getPrismaClient } from ".";
 import { createPost } from "./post";
+import { SUBMIT_DAILY_REPORT } from "./trigger_id";
 import { getTargetChannnelId } from "./utils";
 
 export const registerViews = (app: App) => {
-  app.view("daily_report", async ({ ack, body, client, logger }) => {
+  app.view(SUBMIT_DAILY_REPORT, async ({ ack, body, client, logger }) => {
     await ack();
 
     const values = body.view.state.values;

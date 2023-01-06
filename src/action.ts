@@ -1,7 +1,8 @@
 import { App } from "@slack/bolt";
+import { MODAL_OPEN, SUBMIT_DAILY_REPORT } from "./trigger_id";
 
 export const registerActions = (app: App) => {
-  app.action("modal_open", async ({ body, ack, logger, client }) => {
+  app.action(MODAL_OPEN, async ({ body, ack, logger, client }) => {
     await ack();
 
     const today = new Date();
@@ -10,7 +11,7 @@ export const registerActions = (app: App) => {
         trigger_id: (body as any).trigger_id,
         view: {
           type: "modal",
-          callback_id: "daily_report",
+          callback_id: SUBMIT_DAILY_REPORT,
           title: {
             type: "plain_text",
             text: "igsr5's daily report",
