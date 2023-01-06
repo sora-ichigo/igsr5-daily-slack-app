@@ -17,8 +17,8 @@ export const registerViews = (app: App) => {
     try {
       await client.chat.postMessage({
         channel: getTargetChannnelId(),
-        text: `Nice publish 🚀
-This report can be viewed at https://example.com/posts/${post.id}
+        text: `report published🚀
+you can view this report at https://example.com/posts/${post.id}
 \`\`\`
 # ${post.title}
 
