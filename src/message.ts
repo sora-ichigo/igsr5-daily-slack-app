@@ -1,7 +1,8 @@
 import { App } from "@slack/bolt";
+import { MODAL_OPEN, SEND_MESSAGE } from "./trigger_id";
 
 export const registerMessages = (app: App) => {
-  app.message("nippou", async ({ message, say }) => {
+  app.message(SEND_MESSAGE, async ({ message, say }) => {
     if (message.subtype !== undefined && message.subtype !== "bot_message") return;
 
     const today = new Date();
@@ -19,7 +20,7 @@ export const registerMessages = (app: App) => {
               type: "plain_text",
               text: "はい",
             },
-            action_id: "modal_open",
+            action_id: MODAL_OPEN,
           },
         },
       ],
