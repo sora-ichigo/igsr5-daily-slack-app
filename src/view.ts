@@ -1,4 +1,6 @@
 import { App } from "@slack/bolt";
+import { getPrismaClient } from ".";
+import { createPost } from "./post";
 import { getTargetChannnelId } from "./utils";
 
 export const registerViews = (app: App) => {
@@ -9,16 +11,18 @@ export const registerViews = (app: App) => {
     const title = values.title.text.value;
     const content = values.content.text.value;
 
+    const post = await createPost(getPrismaClient(), title!, content!);
+
     try {
       await client.chat.postMessage({
         channel: getTargetChannnelId(),
         text: `Nice publish 🚀
-This report can be viewed at https://example.com
+This report can be viewed at https://example.com/posts/${post.id}
 \`\`\`
-# ${title}
+# ${post.title}
 
 ---
-${content}
+${post.content}
 \`\`\``,
         mrkdwn: true,
       });
