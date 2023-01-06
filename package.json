@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.12",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
@@ -21,8 +22,9 @@
   },
   "scripts": {
     "dev": "nodemon --watch 'src/*' --ext .ts --exec 'yarn start'",
-    "start": "babel-node -x .ts -- src/index.ts",
-    "lint": "eslint --ext .ts src"
+    "start": "node dist/index.js",
+    "lint": "eslint --ext .ts src",
+    "build": "babel src/ --out-dir dist --extensions '.ts'"
   },
   "dependencies": {
     "@prisma/client": "4.8.1",
