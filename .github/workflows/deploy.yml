@@ -46,4 +46,5 @@ jobs:
             --project $GCP_PROJECT_ID \
             --region $GCP_REGION \
             --platform=managed \
+            --allow-unauthenticated \
             --quiet
