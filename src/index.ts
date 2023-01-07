@@ -1,11 +1,13 @@
 import { PrismaClient } from "@prisma/client";
-import { newApp } from "./app";
+import express from "express";
+import { newBoltApp } from "./app";
 
 const prismaClient = new PrismaClient();
 
-const app = newApp();
+const app = express();
+const boltApp = newBoltApp();
 (async () => {
-  await app.start(Number(process.env.PORT) || 3000);
+  await boltApp.start(Number(process.env.PORT) || 3000);
   console.log("⚡️ Bolt app is running!");
 })();
 

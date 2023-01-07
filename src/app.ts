@@ -4,7 +4,7 @@ import { registerMessages } from "./message";
 import { registerMiddlewares } from "./middleware";
 import { registerViews } from "./view";
 
-export const newApp = () => {
+export const newBoltApp = () => {
   const app: App = new App({
     token: process.env.SLACK_BOT_TOKEN,
     signingSecret: process.env.SLACK_SIGNING_SECRET,
