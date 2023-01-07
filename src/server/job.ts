@@ -1,5 +1,6 @@
 import axios from "axios";
 import { IRouter } from "express";
+import { MODAL_OPEN } from "../trigger_id";
 import { getSlackWebhookUrl } from "../utils";
 
 /*
@@ -9,10 +10,26 @@ import { getSlackWebhookUrl } from "../utils";
 export const postPromptDailyReport = async (router: IRouter) => {
   router.post("/prompt_daily_report", (req, res) => {
     const today = new Date();
-    axios.post<{ text: string }>(
+    axios.post(
       getSlackWebhookUrl(),
       {
-        text: `${today.getMonth() + 1}月${today.getDate()}日の日報を書こう <@ichigo>`,
+        blocks: [
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: `${today.getMonth() + 1}月${today.getDate()}日の日報を書こう <@${process.env.SLACK_ADMIN_USER_ID}>`,
+            },
+            accessory: {
+              type: "button",
+              text: {
+                type: "plain_text",
+                text: "はい",
+              },
+              action_id: MODAL_OPEN,
+            },
+          },
+        ],
       },
       {
         headers: {
@@ -20,6 +37,7 @@ export const postPromptDailyReport = async (router: IRouter) => {
         },
       }
     );
-    res.json({ msg: "yay!" });
+
+    res.status(200);
   });
 };
