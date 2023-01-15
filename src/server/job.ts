@@ -38,6 +38,7 @@ export const postPromptDailyReport = async (router: IRouter) => {
       }
     );
 
-    res.status(200);
+    res.status(200).json();
+    return;
   });
 };
