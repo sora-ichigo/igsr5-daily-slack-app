@@ -32,6 +32,19 @@ export const registerActions = (app: App) => {
             },
             {
               type: "input",
+              block_id: "subtitle",
+              label: {
+                type: "plain_text",
+                text: "サブタイトル",
+              },
+              element: {
+                type: "plain_text_input",
+                action_id: "text",
+              },
+            },
+
+            {
+              type: "input",
               block_id: "content",
               label: {
                 type: "plain_text",

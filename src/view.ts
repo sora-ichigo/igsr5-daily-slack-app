@@ -10,9 +10,10 @@ export const registerViews = (app: App) => {
 
     const values = body.view.state.values;
     const title = values.title.text.value;
+    const subtitle = values.subtitle.text.value;
     const content = values.content.text.value;
 
-    const post = await createPost(getPrismaClient(), title!, content!);
+    const post = await createPost(getPrismaClient(), { title: title!, subtitle: subtitle!, content: content! });
 
     try {
       await client.chat.postMessage({
