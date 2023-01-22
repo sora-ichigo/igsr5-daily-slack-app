@@ -19,13 +19,9 @@ export const registerViews = (app: App) => {
       await client.chat.postMessage({
         channel: getTargetChannnelId(),
         text: `report published🚀
-you can view this report at https://example.com/posts/${post.id}
-\`\`\`
-# ${post.title}
-
----
-${post.content}
-\`\`\``,
+you can view this report at https://daily.igsr5.com/${post.id}
+「${post.title} - ${post.subtitle}」
+`,
         mrkdwn: true,
       });
     } catch (error) {
