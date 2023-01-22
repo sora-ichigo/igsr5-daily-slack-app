@@ -14,13 +14,15 @@ model Post {
   published_at DateTime    @default(now())
   category_id  Int?
   subtitle     String?
-  categories   categories? @relation(fields: [category_id], references: [id])
+  categories   Category? @relation(fields: [category_id], references: [id])
 
   @@map("posts")
 }
 
-model categories {
+model Category {
   id    Int    @id @default(autoincrement())
   name  String @unique
   posts Post[]
+
+  @@map("categories")
 }
