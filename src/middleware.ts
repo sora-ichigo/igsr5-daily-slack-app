@@ -11,7 +11,10 @@ export const registerMiddlewares = (app: App) => {
 
 const authorization: Middleware<AnyMiddlewareArgs> = async ({ next, body }) => {
   const userId: string = getUserId(body);
-  if (!isAdmin(userId)) return;
+  if (!isAdmin(userId)) {
+    console.info("failed authorization");
+    return;
+  }
 
   await next();
 };
