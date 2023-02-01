@@ -1,6 +1,5 @@
 import { App, LogLevel } from "@slack/bolt";
 import { registerActions } from "./action";
-import { registerMessages } from "./message";
 import { registerMiddlewares } from "./middleware";
 import { newReceiver } from "./server/receiver";
 import { registerViews } from "./view";
@@ -25,7 +24,6 @@ export const newBoltApp = () => {
   });
 
   registerMiddlewares(app);
-  registerMessages(app);
   registerActions(app);
   registerViews(app);
 
