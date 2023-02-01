@@ -11,7 +11,7 @@ export const registerMiddlewares = (app: App) => {
 
 const authorization: Middleware<AnyMiddlewareArgs> = async ({ next, body }) => {
   const userId: string = getUserId(body);
-  if (!isAdmin(userId)) throw new Error("user is not admin");
+  if (!isAdmin(userId)) return;
 
   await next();
 };
@@ -21,7 +21,7 @@ const errorReport: Middleware<AnyMiddlewareArgs> = async ({ next, client, body }
     await next();
   } catch (e) {
     client.chat.postMessage({
-      channel: getUserId(body),
+      channel: process.env.SLACK_ADMIN_USER_ID!,
       text: `Error: ${e.message}`,
     });
   }
