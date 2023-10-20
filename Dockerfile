@@ -1,7 +1,7 @@
 # --------------
 # 1. build stage
 # --------------
-FROM node:18.16-alpine3.17 AS build
+FROM node:18.18-alpine3.17 AS build
 
 WORKDIR /build
 
@@ -14,7 +14,7 @@ RUN yarn build
 # --------------
 # 2. runtime stage
 # --------------
-FROM node:18.16-alpine3.17
+FROM node:18.18-alpine3.17
 
 WORKDIR /usr/src/app
 
